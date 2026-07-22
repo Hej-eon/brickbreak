@@ -302,3 +302,28 @@ let gameRunning = true;
 function endGame(text) {
     gameRunning = false;
     message.textContent = text;
+    overlay.style.display = "flex";
+}
+
+function draw() {
+
+    if (!gameRunning) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawBricks();
+    drawPaddle();
+    drawBall();
+
+    collisionDetection();
+    movePaddle();
+    moveBall();
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
